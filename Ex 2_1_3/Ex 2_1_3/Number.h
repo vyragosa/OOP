@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _NUMBER_
+#define _NUMBER_
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -9,7 +10,7 @@ private:
 	int n;
 public:
 	Number(int _n);
-	void PrintArray(int* arr);
-	void InverseArray(int* arr);
+	void PrintArray(int *arr);
+	void InverseArray(int *arr);
 };
-
+#endif

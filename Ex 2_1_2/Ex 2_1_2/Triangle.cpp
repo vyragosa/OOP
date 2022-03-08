@@ -12,6 +12,6 @@ int Triangle::P()
 }
 double Triangle::S()
 {
-	pp = P() * 0.5;
+	double pp = P() * 0.5;
 	return sqrt(pp * (pp - a) * (pp - b) * (pp - c));
 }

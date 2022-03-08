@@ -6,7 +6,7 @@ Number::Number(int _n)
 	cout << "N = " << n << endl;
 }
 
-void Number::PrintArray(int* arr)
+void Number::PrintArray(int *arr)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -14,12 +14,11 @@ void Number::PrintArray(int* arr)
 	}
 }
 
-void Number::InverseArray(int* arr)
+void Number::InverseArray(int *arr)
 {
-	int temp;
 	for (int i = 0; i < n / 2; i++)
 	{
-		temp = arr[i];
+		int temp = arr[i];
 		arr[i] = arr[n - 1 - i];
 		arr[n - 1 - i] = temp;
 	}

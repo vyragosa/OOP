@@ -4,7 +4,6 @@
 using namespace std;
 class Expression
 {
-
 public:
 	int solution(int x, char sign, int y);
 	void printSolution(int numb);

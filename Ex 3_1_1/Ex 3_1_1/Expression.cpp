@@ -4,15 +4,16 @@ int Expression::solution(int x, char sign, int y)
 {
 	if  (sign == '+')
 		return x + y;
-	if (sign == '-')
+	else if (sign == '-')
 		return x - y;
-	if (sign == '*')
+	else if (sign == '*')
 		return x * y;
-	if (sign == '%')
-		return x / y;
+	else if (sign == '%')
+		return x % y;
+
 }
 
 void Expression::printSolution(int numb)
 {
-	cout << numb << endl;
+	cout << numb;
 }

@@ -14,6 +14,12 @@ int main()
 		x = obj.solution(x, sign, y);
 		i++;
 		if (i % 3 == 0)
+		{
+			if (i != 3)
+				cout << endl;
 			obj.printSolution(x);
+
+		}
 	}
+	return 0;
 }

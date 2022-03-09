@@ -20,7 +20,7 @@ int main()
 	cout << obj1.name << " " << obj1.n << endl;
 	cout << obj2.name << " " << obj2.n << endl;
 	cout << left << setw(15) << obj1.name 
-		<< left<< setw(15) << obj2.name;
+		<< left << setw(15) << obj2.name;
 	numb2 = obj1.size;
 	for (int i = 0; i < numb2; i++)
 	{

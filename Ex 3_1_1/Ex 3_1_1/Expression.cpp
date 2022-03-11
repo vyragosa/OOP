@@ -1,7 +1,6 @@
 #include "Expression.h"
 
-int Expression::solution(int x, char sign, int y)
-{
+int Expression::solution(int x, char sign, int y) {
 	if  (sign == '+')
 		return x + y;
 	else if (sign == '-')
@@ -10,10 +9,8 @@ int Expression::solution(int x, char sign, int y)
 		return x * y;
 	else if (sign == '%')
 		return x % y;
-
 }
 
-void Expression::printSolution(int numb)
-{
+void Expression::printSolution(int numb) {
 	cout << numb;
 }

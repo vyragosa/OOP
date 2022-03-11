@@ -1,8 +1,7 @@
 #ifndef _SECONDTYPE_	
 #define _SECONDTYPE_	
 class FirstType;
-class SecondType
-{
+class SecondType {
 private:
 	int y, z;
 public:

@@ -3,9 +3,7 @@
 #include "SecondType.h"
 using namespace std;
 int max(FirstType F, SecondType S);
-
-int main()
-{
+int main() {
 	int n, m;
 	cin >> n;
 	FirstType obj1(n);
@@ -15,9 +13,7 @@ int main()
 	cout << "max = " << max(obj1, obj2);
 	return 0;
 }
-
-int max(FirstType F, SecondType S)
-{
+int max(FirstType F, SecondType S) {
 	if (F.x >= S.y) 
 		if (F.x >= S.z)
 			return F.x;

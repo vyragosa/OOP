@@ -2,8 +2,7 @@
 #define _STACK_
 #include <iostream>
 using namespace std;
-class Stack
-{
+class Stack {
 private:
 	int* arr;
 public:

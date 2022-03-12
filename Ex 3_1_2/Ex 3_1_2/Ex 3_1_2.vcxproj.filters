@@ -24,12 +24,18 @@
     <ClCompile Include="SecondType.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="max.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstType.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="SecondType.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="max.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

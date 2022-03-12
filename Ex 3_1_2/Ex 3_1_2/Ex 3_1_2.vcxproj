@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClCompile Include="Ex 3_1_2.cpp" />
     <ClCompile Include="FirstType.cpp" />
+    <ClCompile Include="max.cpp" />
     <ClCompile Include="SecondType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FirstType.h" />
+    <ClInclude Include="max.h" />
     <ClInclude Include="SecondType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -5,7 +5,7 @@ using namespace std;
 class cl_application : public cl_base
 {
 public:
-//	cl_application(cl_base* parent);
+	//	cl_application(cl_base* parent);
 
 };
 #endif

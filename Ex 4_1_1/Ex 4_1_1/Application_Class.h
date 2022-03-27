@@ -19,4 +19,3 @@ public:
 	Nod_Class(Base_Class* dRoot_Ptr, std::string dObject_Name);
 };
 #endif
-

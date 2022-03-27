@@ -19,4 +19,3 @@ public:
 	Base_Class* Find_Object_By_Name(std::string dObject_Name);
 };
 #endif
-

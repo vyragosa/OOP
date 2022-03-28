@@ -4,8 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-class Application_Class : public Base_Class
-{
+class Application_Class : public Base_Class {
 public:
 	Application_Class(Base_Class* Root_Ptr);
 	void Build_Tree();
@@ -13,8 +12,7 @@ public:
 
 };
 
-class Nod_Class : public Base_Class
-{
+class Nod_Class : public Base_Class {
 public:
 	Nod_Class(Base_Class* dRoot_Ptr, std::string dObject_Name);
 };

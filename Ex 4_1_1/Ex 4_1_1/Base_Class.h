@@ -3,8 +3,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
-class Base_Class
-{
+class Base_Class {
 private:
 	std::string Object_Name;
 	Base_Class* Root_Ptr;

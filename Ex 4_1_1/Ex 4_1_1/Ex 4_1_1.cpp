@@ -1,6 +1,5 @@
 ﻿#include "Application_Class.h"
-int main()
-{
+int main() {
 	// program here
 	Application_Class Tree_Object(nullptr);
 	Tree_Object.Build_Tree();

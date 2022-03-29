@@ -11,9 +11,4 @@ public:
 	int Exec_App();
 
 };
-
-class Nod_Class : public Base_Class {
-public:
-	Nod_Class(Base_Class* dRoot_Ptr, std::string dObject_Name);
-};
 #endif

@@ -1,17 +1,15 @@
 #include "Base_Class.h"
-
-Base_Class::Base_Class(Base_Class* _Root_Ptr, std::string _Object_Name)
-{
-	Root_Ptr = _Root_Ptr;
+Base_Class::Base_Class(Base_Class* _Root_Ptr, std::string _Object_Name) {
 	Object_Name = _Object_Name;
+	Root_Ptr = _Root_Ptr;
 	if (_Root_Ptr != nullptr) {
 		Root_Ptr->Add_To_Slave(this);
 	}
 }
-void Base_Class::Add_To_Slave(Base_Class* Slave_Ptr)
-{
-	if (Slave_Ptr != nullptr) {
-		Slave_Vec.push_back(Slave_Ptr);
+
+void Base_Class::Add_To_Slave(Base_Class * _Slave_Ptr) {
+	if (_Slave_Ptr != nullptr) {
+		Slave_Vec.push_back(_Slave_Ptr);
 	}
 }
 
@@ -23,7 +21,8 @@ std::string Base_Class::Get_Object_Name() {
 	return Object_Name;
 }
 
-void Base_Class::Print_Tree() {
+void Base_Class::Print_Tree()
+{
 	if (Root_Ptr == nullptr) {
 		std::cout << Object_Name;
 	}
@@ -38,7 +37,8 @@ void Base_Class::Print_Tree() {
 	}
 }
 
-void Base_Class::Set_Root_Ptr(Base_Class* _Root_Ptr) {
+void Base_Class::Set_Root_Ptr(Base_Class* _Root_Ptr)
+{
 	if (Root_Ptr != nullptr) {
 		Root_Ptr->Remove_From_Slave(Object_Name);
 	}
@@ -62,8 +62,9 @@ Base_Class* Base_Class::Get_Root_Ptr() {
 
 Base_Class* Base_Class::Find_Object_By_Name(std::string _Object_Name) {
 	Base_Class* Target_Object;
-	if (Object_Name == _Object_Name)
+	if (_Object_Name == Object_Name) {
 		return this;
+	}
 	for (int i = 0; i < Slave_Vec.size(); i++) {
 		Target_Object = Slave_Vec[i]->Find_Object_By_Name(_Object_Name);
 		if (Target_Object != nullptr) 

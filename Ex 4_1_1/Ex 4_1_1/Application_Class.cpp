@@ -1,5 +1,4 @@
 #include "Application_Class.h"
-
 Application_Class::Application_Class(Base_Class* _Root_Ptr) :Base_Class(_Root_Ptr) {
 }
 

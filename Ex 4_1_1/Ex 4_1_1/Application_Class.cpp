@@ -15,6 +15,9 @@ void Application_Class::Build_Tree()
 			break;
 		Temp_Root_Obj = Find_Object_By_Name(Temp_Root_Name);
 		if (Temp_Root_Obj != nullptr) {
+			new Base_Class(Temp_Root_Obj, Temp_Object_Name);
+		}
+	} 
 			new Node_Class(Temp_Root_Obj, Temp_Object_Name);
 		}
 	}

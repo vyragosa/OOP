@@ -10,7 +10,6 @@ int main() {
 	Stack obj2(name, n);
 	do {
 		cin >> numb1;
-
 	} while (obj1.fill(numb1) && obj2.fill(numb1));
 	cout << obj1.name << " " << obj1.n << endl;
 	cout << obj2.name << " " << obj2.n << endl;

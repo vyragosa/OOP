@@ -1,8 +1,7 @@
 ﻿#include "Application_Class.h"
 int main() {
-	// program here
-	Application_Class Tree_Object(nullptr);
-	Tree_Object.Build_Tree();
-	return Tree_Object.Exec_App();
-	//return 0;
+	Application_Class Application_Obj(nullptr);
+	Application_Obj.Build_Tree();
+	return Application_Obj.Exec_App();
+	return 0;
 }

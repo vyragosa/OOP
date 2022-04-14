@@ -1,4 +1,4 @@
-#include "Class_4.h"
+#include "Class_2.h"
 #include <iostream>
 #include <cmath>
 Class_2::Class_2(std::string Object_Name, int Numb) : Class_1(Object_Name, Numb) {

@@ -1,8 +1,5 @@
 ﻿#include <iostream>
 #include <string>
-#include "Class_1.h"
-#include "Class_2.h"
-#include "Class_3.h"
 #include "Class_4.h"
 
 int main() {

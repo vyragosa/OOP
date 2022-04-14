@@ -6,9 +6,9 @@
 #include "Class_4.h"
 
 int main() {
-	std::string obj_name;
-	int numb;
-	std::cin >> obj_name >> numb;
-	Class_4 obj(obj_name, numb);
+	std::string Object_Name;
+	int Numb;
+	std::cin >> Object_Name >> Numb;
+	Class_4 obj(Object_Name, Numb);
 	return 0;
 }

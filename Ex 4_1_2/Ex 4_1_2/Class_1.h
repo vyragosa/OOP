@@ -3,10 +3,10 @@
 #include <string>
 #include "Class_1.h"
 class Class_1 {
-	std::string obj_name;
-	int numb;
+	std::string Object_Name;
+	int Numb;
 public:
-	Class_1(std::string obj_name, int numb);
+	Class_1(std::string Object_Name, int Numb);
 	void Output();
 };
 

@@ -1,11 +1,12 @@
 #include "Class_4.h"
 #include <iostream>
-Class_2::Class_2(std::string obj_name, int numb) : Class_1(obj_name, numb) {
-	this->obj_name = obj_name + "_2";
-	this->numb = pow(numb, 2);
+#include <cmath>
+Class_2::Class_2(std::string Object_Name, int Numb) : Class_1(Object_Name, Numb) {
+	this->Object_Name = Object_Name + "_2";
+	this->Numb = pow(Numb, 2);
 	Output();
 }
 
 void Class_2::Output() {
-	std::cout << obj_name << " " << numb << std::endl;
+	std::cout << Object_Name << " " << Numb << std::endl;
 }

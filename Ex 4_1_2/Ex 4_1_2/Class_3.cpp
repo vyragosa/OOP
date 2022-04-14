@@ -1,11 +1,12 @@
 #include "Class_3.h"
 #include <iostream>
-Class_3::Class_3(std::string obj_name, int numb) : Class_2(obj_name, numb) {
-	this->obj_name = obj_name + "_3";
-	this->numb = pow(numb, 3);
+#include <cmath>
+Class_3::Class_3(std::string Object_Name, int Numb) : Class_2(Object_Name, Numb) {
+	this->Object_Name = Object_Name + "_3";
+	this->Numb = pow(Numb, 3);
 	Output();
 }
 
 void Class_3::Output() {
-	std::cout << obj_name << " " << numb << std::endl;
+	std::cout << Object_Name << " " << Numb << std::endl;
 }

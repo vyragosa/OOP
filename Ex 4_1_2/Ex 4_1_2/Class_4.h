@@ -3,12 +3,11 @@
 #include <string>
 #include "Class_3.h"
 class Class_4 : private Class_3 {
-	std::string obj_name;
-	int numb;
+	std::string Object_Name;
+	int Numb;
 public:
-	Class_4(std::string obj_name, int numb);
+	Class_4(std::string Object_Name, int Numb);
 	void Output();
 };
 
 #endif
-

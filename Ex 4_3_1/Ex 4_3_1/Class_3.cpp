@@ -2,7 +2,7 @@
 #include <iostream>
 void Class_3::Create_App() {
 	Input();
-	std::cout << "Array dimension : " << arr_size;
+	std::cout << "Array dimension: " << arr_size;
 	std::cout << "\nThe original array:";
 	Output();
 	Sort();

@@ -7,5 +7,5 @@ void Class_3::in_out() {
 	for (int i = 0; i < arr_size; i++)
 		std::cout << std::right << std::setw(5) << arr[i];
 	std::cout << "\nMin: " << Class_1::func();
-	std::cout << "\nMax: " << Class_2::func();
+	std::cout << "\nSum: " << Class_2::func();
 }

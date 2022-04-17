@@ -3,8 +3,8 @@
 #include <iostream>
 class Base_Class {
 protected:
-	int* arr;
 	int arr_size;
+	int* arr;
 	void in_out();
 };
 #endif

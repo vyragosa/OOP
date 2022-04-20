@@ -1,8 +1,7 @@
 ﻿#include <iostream>
 #include "Class_4.h"
 
-int main()
-{
+int main() {
 	Class_4* obj;
 	int a1, a2, a3, a4;
 	int x;

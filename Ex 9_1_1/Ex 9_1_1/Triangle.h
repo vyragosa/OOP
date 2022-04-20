@@ -5,6 +5,8 @@ private:
 	int a, b, c;
 public:
 	Triangle(int a, int b, int c);
+	int P();
+	double S();
 	Triangle operator += (Triangle& other);
 	Triangle operator -= (Triangle& other);
 	void Output();

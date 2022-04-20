@@ -6,6 +6,15 @@ Triangle::Triangle(int a, int b, int c) {
 	this->c = c;
 }
 
+int Triangle::P() {
+	return a + b + c;
+}
+
+double Triangle::S() {
+	double pp = P() * 0.5;
+	return sqrt(pp * (pp - a) * (pp - b) * (pp - c));
+}
+
 Triangle Triangle::operator+=(Triangle& other) {
 	return Triangle(a += other.a, b += other.b, c += other.c);
 }

@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <string>
 #include "Class_4.h"
 
 int main()
@@ -34,18 +33,7 @@ int main()
 		default:
 			break;
 		}
-		std::cout << std::endl << "F( " << x << " ) = " << num;
+		std::cout << std::endl << "Class " << class_name << "    F( " << x << " ) = " << num;
 	}
 	return 0;
 }
-/*
-	10 20 30 40
-	12 2
-	13 3
-	0
-	a1 = 10    a2 = 20    a3 = 30    a4 = 40
-	F( 12 ) = 3000
-	F( 13 ) = 69420
-	....
-
-*/

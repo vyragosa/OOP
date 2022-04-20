@@ -1,5 +1,7 @@
 #include "Triangle.h"
 #include <iostream>
+#include <cmath>
+
 Triangle::Triangle(int a, int b, int c) {
 	this->a = a;
 	this->b = b;
@@ -16,11 +18,13 @@ double Triangle::S() {
 }
 
 Triangle Triangle::operator+=(Triangle& other) {
-	return Triangle(a += other.a, b += other.b, c += other.c);
+	if ((b + other.b + c + other.c > a + other.a) && (a + other.a + c + other.c > b + other.b) && (a + other.a + b + other.b > c + other.c))
+		return Triangle(a += other.a, b += other.b, c += other.c);
+	return Triangle(a, b, c);
 }
 
 Triangle Triangle::operator-=(Triangle& other) {
-	if (a - other.a > 0 && b - other.b > 0 && c - other.c > 0)
+	if ((b - other.b + c - other.c > a - other.a) && (a - other.a + c - other.c > b - other.b) && (a - other.a + b - other.b > c - other.c))
 		return Triangle(a -= other.a, b -= other.b, c -= other.c);
 	return Triangle(a, b, c);
 }

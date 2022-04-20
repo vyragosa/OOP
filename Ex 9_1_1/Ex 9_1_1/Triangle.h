@@ -11,4 +11,5 @@ public:
 	Triangle operator -= (Triangle& other);
 	void Output();
 };
+
 #endif

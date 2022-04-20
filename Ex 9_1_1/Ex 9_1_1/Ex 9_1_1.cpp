@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "Triangle.h"
-#include <vector> 
+#include <vector>
+
 int main() {
 	int a, b, c, n;
 	char sign;

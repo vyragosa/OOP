@@ -8,8 +8,8 @@ private:
 	uint8_t pattern;
 public:
 	Binary_Class(uint8_t value, uint8_t pattern);
-	Binary_Class operator & (Binary_Class& other);
-	Binary_Class operator | (Binary_Class& other);
+	Binary_Class operator &= (Binary_Class& other);
+	Binary_Class operator |= (Binary_Class& other);
 	void Output();
 };
 

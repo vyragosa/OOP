@@ -22,10 +22,10 @@ int main() {
 		switch (sign)
 	{
 		case '&':
-			obj[a - 1] = obj[a - 1] & obj[b - 1];
+			obj[a - 1] &= obj[b - 1];
 			break;
 		case '|':
-			obj[a - 1] = obj[a - 1] | obj[b - 1];
+			obj[a - 1] |= obj[b - 1];
 			break;
 		default:
 			break;

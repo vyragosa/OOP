@@ -6,14 +6,14 @@ Binary_Class::Binary_Class(uint8_t value, uint8_t pattern) {
 	this->pattern = pattern;
 }
 
-Binary_Class Binary_Class::operator&(Binary_Class& other) {
+Binary_Class Binary_Class::operator&=(Binary_Class& other) {
 	uint8_t mask = ~(pattern & other.pattern);
-	return Binary_Class(((value ^ mask) & (other.value ^ mask)) ^ mask, pattern);
+	return Binary_Class(value = ((value ^ mask) & (other.value ^ mask)) ^ mask, pattern);
 }
 
-Binary_Class Binary_Class::operator|(Binary_Class& other) {
+Binary_Class Binary_Class::operator|=(Binary_Class& other) {
 	uint8_t mask = (pattern & other.pattern);
-	return Binary_Class(((value ^ mask) | (other.value ^ mask)) ^ mask, pattern);
+	return Binary_Class(value = ((value ^ mask) | (other.value ^ mask)) ^ mask, pattern);
 }
 
 void Binary_Class::Output() {

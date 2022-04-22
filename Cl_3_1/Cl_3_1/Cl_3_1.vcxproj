@@ -142,12 +142,20 @@
     <ClCompile Include="Application_Class.cpp" />
     <ClCompile Include="Base_Class.cpp" />
     <ClCompile Include="Cl_3_1.cpp" />
-    <ClCompile Include="Node_Class.cpp" />
+    <ClCompile Include="Node_Class_2.cpp" />
+    <ClCompile Include="Node_Class_3.cpp" />
+    <ClCompile Include="Node_Class_4.cpp" />
+    <ClCompile Include="Node_Class_5.cpp" />
+    <ClCompile Include="Node_Class_6.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application_Class.h" />
     <ClInclude Include="Base_Class.h" />
-    <ClInclude Include="Node_Class.h" />
+    <ClInclude Include="Node_Class_2.h" />
+    <ClInclude Include="Node_Class_3.h" />
+    <ClInclude Include="Node_Class_4.h" />
+    <ClInclude Include="Node_Class_5.h" />
+    <ClInclude Include="Node_Class_6.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

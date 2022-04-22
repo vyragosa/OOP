@@ -1,10 +1,9 @@
 #include "Base_Class.h"
-Base_Class::Base_Class(Base_Class* _Root_Ptr, std::string _Object_Name) {
+Base_Class::Base_Class(Base_Class* _Parent_Ptr, std::string _Object_Name) {
 	Object_Name = _Object_Name;
-	Root_Ptr = _Root_Ptr;
-	if (_Root_Ptr != nullptr) {
-		Root_Ptr->Add_To_Slave(this);
-	}
+	Parent_Ptr = _Parent_Ptr;
+	if (_Parent_Ptr != nullptr)
+		Parent_Ptr->Add_To_Slave(this);
 }
 
 void Base_Class::Set_Object_Name(std::string _Object_Name) {
@@ -15,31 +14,31 @@ std::string Base_Class::Get_Object_Name() {
 	return Object_Name;
 }
 
-void Base_Class::Print_Tree(const int level) {
-	if (Root_Ptr == nullptr) {
-		std::cout << Object_Name;
-	}
-	if (Slave_Vec.size() > 0) {
-		for (int i = 0; i < Slave_Vec.size(); i++) {
-			std::cout << std::endl;
-			for (int j = 0; j < level; j++)
-				std::cout << "    ";
-			std::cout << Slave_Vec[i]->Get_Object_Name();
-			Slave_Vec[i]->Print_Tree(level + 1);
-		}
-	}
+void Base_Class::Print_Tree(bool output_state, const int level) {
+	std::cout << std::endl;
+	for (int j = 0; j < level; j++)
+		std::cout << "    ";
+	std::cout << this->Get_Object_Name();
+	if (output_state == true)
+		if (this->Get_State() == true)
+			std::cout << " is ready";
+		else
+			std::cout << " is not ready";
+	if (Slave_Vec.size() > 0) 
+		for (int i = 0; i < Slave_Vec.size(); i++)
+			Slave_Vec[i]->Print_Tree(output_state, level + 1);
 }
 
-void Base_Class::Set_Root_Ptr(Base_Class* _Root_Ptr) {
-	if (Root_Ptr != nullptr) {
-		Root_Ptr->Remove_From_Slave(Object_Name);
+void Base_Class::Set_Parent_Ptr(Base_Class* _Parent_Ptr) {
+	if (Parent_Ptr != nullptr) {
+		Parent_Ptr->Remove_From_Slave(Object_Name);
 	}
-	Root_Ptr = _Root_Ptr;
-	Root_Ptr->Add_To_Slave(this);
+	Parent_Ptr = _Parent_Ptr;
+	Parent_Ptr->Add_To_Slave(this);
 }
 
-Base_Class* Base_Class::Get_Root_Ptr() {
-	return Root_Ptr;
+Base_Class* Base_Class::Get_Parent_Ptr() {
+	return Parent_Ptr;
 }
 
 void Base_Class::Add_To_Slave(Base_Class* Slave_Ptr) {
@@ -58,14 +57,30 @@ void Base_Class::Remove_From_Slave(std::string Slave_Name) {
 }
 
 Base_Class* Base_Class::Find_Object_By_Name(std::string _Object_Name) {
-	Base_Class* Target_Object;
 	if (Object_Name == _Object_Name) {
 		return this;
 	}
 	for (int i = 0; i < Slave_Vec.size(); i++) {
-		Target_Object = Slave_Vec[i]->Find_Object_By_Name(_Object_Name);
+		Base_Class* Target_Object = Slave_Vec[i]->Find_Object_By_Name(_Object_Name);
 		if (Target_Object != nullptr)
 			return Target_Object;
 	}
 	return nullptr;
+}
+
+void Base_Class::Set_State(int State_Value) {
+	if (State_Value != 0) {
+		Base_Class* Temp_Parent_Ptr = Get_Parent_Ptr();
+		while (Temp_Parent_Ptr != nullptr)
+		{
+			if (Temp_Parent_Ptr->Get_State() == 0)
+				return;
+			Temp_Parent_Ptr = Temp_Parent_Ptr->Get_Parent_Ptr();
+		}
+		State = true;
+	}
+}
+
+bool Base_Class::Get_State() {
+	return State;
 }

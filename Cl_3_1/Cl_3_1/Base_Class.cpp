@@ -24,7 +24,7 @@ void Base_Class::Print_Tree(bool output_state, const int level) {
 			std::cout << " is ready";
 		else
 			std::cout << " is not ready";
-	if (Slave_Vec.size() > 0) 
+	if (Slave_Vec.size() > 0)
 		for (int i = 0; i < Slave_Vec.size(); i++)
 			Slave_Vec[i]->Print_Tree(output_state, level + 1);
 }
@@ -71,8 +71,7 @@ Base_Class* Base_Class::Find_Object_By_Name(std::string _Object_Name) {
 void Base_Class::Set_State(int State_Value) {
 	if (State_Value != 0) {
 		Base_Class* Temp_Parent_Ptr = Get_Parent_Ptr();
-		while (Temp_Parent_Ptr != nullptr)
-		{
+		while (Temp_Parent_Ptr != nullptr) {
 			if (Temp_Parent_Ptr->Get_State() == 0)
 				return;
 			Temp_Parent_Ptr = Temp_Parent_Ptr->Get_Parent_Ptr();

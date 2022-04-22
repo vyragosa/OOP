@@ -13,25 +13,25 @@ void Application_Class::Build_Tree() {
 			break;
 		std::cin >> Temp_Object_Name >> Class_Number;
 		Base_Class* Temp_Parent_Obj = Find_Object_By_Name(Temp_Parent_Name);
-			switch (Class_Number) {
-			case 2:
-				new Node_Class_2(Temp_Parent_Obj, Temp_Object_Name);
-				break;
-			case 3:
-				new Node_Class_3(Temp_Parent_Obj, Temp_Object_Name);
-				break;
-			case 4:
-				new Node_Class_4(Temp_Parent_Obj, Temp_Object_Name);
-				break;
-			case 5:
-				new Node_Class_5(Temp_Parent_Obj, Temp_Object_Name);
-				break;
-			case 6:
-				new Node_Class_6(Temp_Parent_Obj, Temp_Object_Name);
-				break;
-			default:
-				break;
-			}
+		switch (Class_Number) {
+		case 2:
+			new Node_Class_2(Temp_Parent_Obj, Temp_Object_Name);
+			break;
+		case 3:
+			new Node_Class_3(Temp_Parent_Obj, Temp_Object_Name);
+			break;
+		case 4:
+			new Node_Class_4(Temp_Parent_Obj, Temp_Object_Name);
+			break;
+		case 5:
+			new Node_Class_5(Temp_Parent_Obj, Temp_Object_Name);
+			break;
+		case 6:
+			new Node_Class_6(Temp_Parent_Obj, Temp_Object_Name);
+			break;
+		default:
+			break;
+		}
 	}
 }
 

@@ -13,7 +13,6 @@ void Application_Class::Build_Tree() {
 			break;
 		std::cin >> Temp_Object_Name >> Class_Number;
 		Base_Class* Temp_Parent_Obj = Find_Object_By_Name(Temp_Parent_Name);
-		if (Temp_Parent_Obj != nullptr) {
 			switch (Class_Number) {
 			case 2:
 				new Node_Class_2(Temp_Parent_Obj, Temp_Object_Name);
@@ -33,15 +32,14 @@ void Application_Class::Build_Tree() {
 			default:
 				break;
 			}
-		}
 	}
 }
 
 void Application_Class::Input_State() {
-	std::string _ObjectName;
+	std::string _Object_Name;
 	int State_Value;
-	while (std::cin >> _ObjectName >> State_Value)
-		Find_Object_By_Name(_ObjectName)->Set_State(State_Value);
+	while (std::cin >> _Object_Name >> State_Value)
+		Find_Object_By_Name(_Object_Name)->Set_State(State_Value);
 }
 
 int Application_Class::Exec_App() {

@@ -16,7 +16,7 @@ std::string Base_Class::Get_Object_Name() {
 
 void Base_Class::Print_Tree(bool output_state, const int level) {
 	std::cout << std::endl;
-	for (int j = 0; j < level; j++)
+	for (int i = 0; i < level; i++)
 		std::cout << "    ";
 	std::cout << this->Get_Object_Name();
 	if (output_state == true)

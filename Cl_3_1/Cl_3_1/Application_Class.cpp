@@ -5,8 +5,8 @@ Application_Class::Application_Class(Base_Class* _Parent_Ptr) : Base_Class(_Pare
 void Application_Class::Build_Tree() {
 	std::string Temp_Parent_Name, Temp_Object_Name;
 	int Class_Number;
-	std::cin >> Temp_Parent_Name;
-	this->Set_Object_Name(Temp_Parent_Name);
+	std::cin >> Temp_Object_Name;
+	this->Set_Object_Name(Temp_Object_Name);
 	while (true) {
 		std::cin >> Temp_Parent_Name;
 		if (Temp_Parent_Name == "endtree")

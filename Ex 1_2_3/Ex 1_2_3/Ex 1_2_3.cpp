@@ -7,7 +7,7 @@ int main()
 	std::cin >> n;
 	obj.Set_n(n);
 	obj.Calculate();
-	std::cout << obj.Get_n();
-	std::cout << obj.Get_digits();
+	std::cout << "n = " << obj.Get_n() << std::endl;
+	std::cout << "N = " << obj.Get_digits();
 	return 0;
 }

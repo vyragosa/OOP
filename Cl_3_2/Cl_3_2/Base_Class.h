@@ -21,10 +21,10 @@ public:
 	Base_Class* Find_Object_By_Name(std::string _Object_Name);
 	void Set_State(int State_Value);
 	int Get_State();
-	Base_Class* Get_Object(std::string objectPath);
-	Base_Class* getTrailObjectRoot(std::string objectTrail);
-	Base_Class* getObjectRoot();
-	std::string getTrailItem(std::string objectPath, int index_level);
-	Base_Class* getChild(std::string nameChild);
+	Base_Class* Get_Object_By_Path(std::string object_path);
+	Base_Class* Get_Trail(std::string object_trail);
+	Base_Class* Get_Object_Root();
+	std::string Get_Trail_Item(std::string object_path, int index_level);
+	Base_Class* Get_Child(std::string name_child);
 };
 #endif

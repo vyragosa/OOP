@@ -86,7 +86,7 @@ int Base_Class::Get_State() {
 
 Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
 	if ((object_path[0] == '/') && (object_path[1] == '/'))
-		return Find_Object_By_Name(object_path.substr(2, std::string::npos));
+		return Get_Object_Root()->Find_Object_By_Name(object_path.substr(2, std::string::npos));
 	if (object_path[0] == '.')
 		return this;
 	if (object_path.size() == 1 && object_path[0] == '/')
@@ -97,27 +97,24 @@ Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
 Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 	bool absolute = true;
 	int index_level = 1;
+	std::string trail_part;
 	if (object_trail[0] != '/') {
 		object_trail = "/" + object_trail;
 		absolute = false;
 	}
-
-	std::string trail_item;
-
-	Base_Class* Base_Pathfinder = Get_Object_Root();
-
-	trail_item = Get_Trail_Item(object_trail, index_level);
-	while (!trail_item.empty()) {
-		if (absolute == 1)
-			Base_Pathfinder = Base_Pathfinder->Get_Child(trail_item);
-		else
-			Base_Pathfinder = Base_Pathfinder->Find_Object_By_Name(trail_item);
-		if (!Base_Pathfinder)
-			return nullptr;
+	trail_part = Get_Trail_Part(object_trail, index_level);
+	Base_Class* Obj_Pathfinder = Find_Object_By_Name(trail_part);
+	while (Obj_Pathfinder) {
 		index_level++;
-		trail_item = Get_Trail_Item(object_trail, index_level);
+		trail_part = Get_Trail_Part(object_trail, index_level);
+		if (trail_part.empty())
+			return Obj_Pathfinder;
+		if (absolute == 1)
+			Obj_Pathfinder = Obj_Pathfinder->Get_Child(trail_part);
+		else
+			Obj_Pathfinder = Obj_Pathfinder->Find_Object_By_Name(trail_part);
 	}
-	return Base_Pathfinder;
+	return nullptr;
 }
 
 Base_Class* Base_Class::Get_Object_Root() {
@@ -128,7 +125,7 @@ Base_Class* Base_Class::Get_Object_Root() {
 	return Base_Pathfinder;
 }
 
-std::string Base_Class::Get_Trail_Item(std::string object_path, int index_level) {
+std::string Base_Class::Get_Trail_Part(std::string object_path, int index_level) {
 	int index_end;
 	int index_start = 1;
 	int index_pathfinder_level = 1;

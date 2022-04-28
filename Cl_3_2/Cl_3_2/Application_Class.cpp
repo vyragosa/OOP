@@ -3,16 +3,16 @@ Application_Class::Application_Class(Base_Class* _Parent_Ptr) :Base_Class(_Paren
 }
 
 bool Application_Class::Build_Tree() {
-	std::string Temp_Parent_Name, Temp_Object_Name, path;
+	std::string Temp_Object_Name, path;
 	int Class_Number;
 	std::cin >> Temp_Object_Name;
 	this->Set_Object_Name(Temp_Object_Name);
 	while (true) {
-		std::cin >> Temp_Parent_Name;
-		if (Temp_Parent_Name == "endtree")
+		std::cin >> path;
+		if (path == "endtree")
 			return true;
 		std::cin >> Temp_Object_Name >> Class_Number;
-		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(Temp_Parent_Name);
+		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(path);
 		if (Temp_Parent_Obj == nullptr) {
 			std::cout << "Object tree";
 			Print_Tree(false);
@@ -52,8 +52,6 @@ void Application_Class::Command_Input() {
 	std::string command, path;
 	Base_Class* Temp_Obj;
 	Base_Class* Current_Obj = this;
-
-
 	while (true) {
 
 		std::cin >> command;
@@ -81,7 +79,6 @@ void Application_Class::Command_Input() {
 
 	}
 }
-
 
 int Application_Class::Exec_App() {
 	std::cout << "Object tree";

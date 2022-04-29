@@ -84,68 +84,96 @@ int Base_Class::Get_State() {
 	return State;
 }
 
-Base_Class* Base_Class::Get_Object(std::string objectPath) {
-	if ((objectPath[0] == '/') && (objectPath[1] == '/'))
-		return Find_Object_By_Name(objectPath.substr(2, std::string::npos));
-	if (objectPath[0] == '.')
+Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
+	if ((object_path[0] == '/') && (object_path[1] == '/'))
+<<<<<<< HEAD
+		return Find_Object_By_Name(object_path.substr(2, std::string::npos));
+=======
+		return Get_Object_Root()->Find_Object_By_Name(object_path.substr(2, std::string::npos));
+>>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
+	if (object_path[0] == '.')
 		return this;
-	if (objectPath.size() == 1 && objectPath[0] == '/')
-		return getObjectRoot();
-	return getTrailObjectRoot(objectPath);
+	if (object_path.size() == 1 && object_path[0] == '/')
+		return Get_Object_Root();
+	return Get_Trail(object_path);
 }
 
-Base_Class* Base_Class::getTrailObjectRoot(std::string objectTrail) {
-	int absolute = 1;
+Base_Class* Base_Class::Get_Trail(std::string object_trail) {
+	bool absolute = true;
 	int index_level = 1;
-	if (objectTrail[0] != '/') {
-		objectTrail = "/" + objectTrail;
-		absolute = 0;
+<<<<<<< HEAD
+=======
+	std::string trail_part;
+>>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
+	if (object_trail[0] != '/') {
+		object_trail = "/" + object_trail;
+		absolute = false;
 	}
+<<<<<<< HEAD
 		
-	std::string TrailItem;
+	std::string trail_item;
 
-	Base_Class* MerchantBase = getObjectRoot();
+	Base_Class* Base_Pathfinder = Get_Object_Root();
 
-	TrailItem = getTrailItem(objectTrail, index_level);
-	while (!TrailItem.empty()) {
+	trail_item = Get_Trail_Item(object_trail, index_level);
+	while (!trail_item.empty()) {
 		if (absolute == 1)
-			MerchantBase = MerchantBase->getChild(TrailItem);
+			Base_Pathfinder = Base_Pathfinder->Get_Child(trail_item);
 		else
-			MerchantBase = MerchantBase->Find_Object_By_Name(TrailItem);
-		if (!MerchantBase)
+			Base_Pathfinder = Base_Pathfinder->Find_Object_By_Name(trail_item);
+		if (!Base_Pathfinder)
 			return nullptr;
 		index_level++;
-		TrailItem = getTrailItem(objectTrail, index_level);
+		trail_item = Get_Trail_Item(object_trail, index_level);
 	}
-	return MerchantBase;
+	return Base_Pathfinder;
+=======
+	trail_part = Get_Trail_Part(object_trail, index_level);
+	Base_Class* Obj_Pathfinder = Find_Object_By_Name(trail_part);
+	while (Obj_Pathfinder) {
+		index_level++;
+		trail_part = Get_Trail_Part(object_trail, index_level);
+		if (trail_part.empty())
+			return Obj_Pathfinder;
+		if (absolute == 1)
+			Obj_Pathfinder = Obj_Pathfinder->Get_Child(trail_part);
+		else
+			Obj_Pathfinder = Obj_Pathfinder->Find_Object_By_Name(trail_part);
+	}
+	return nullptr;
+>>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 }
 
-Base_Class* Base_Class::getObjectRoot() {
-	Base_Class* MerchantBase = this;
-	while (MerchantBase->Parent_Ptr) {
-		MerchantBase = MerchantBase->Parent_Ptr;
+Base_Class* Base_Class::Get_Object_Root() {
+	Base_Class* Base_Pathfinder = this;
+	while (Base_Pathfinder->Parent_Ptr) {
+		Base_Pathfinder = Base_Pathfinder->Parent_Ptr;
 	}
-	return MerchantBase;
+	return Base_Pathfinder;
 }
 
-std::string Base_Class::getTrailItem(std::string objectPath, int index_level) {
-	int index_start, index_end, index_merchantLevel;
-	index_start = 1;
-	index_merchantLevel = 1;
+<<<<<<< HEAD
+std::string Base_Class::Get_Trail_Item(std::string object_path, int index_level) {
+=======
+std::string Base_Class::Get_Trail_Part(std::string object_path, int index_level) {
+>>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
+	int index_end;
+	int index_start = 1;
+	int index_pathfinder_level = 1;
 
 	while (index_start) {
-		index_end = objectPath.find("/", index_start);
-		if (index_merchantLevel == index_level)
-			return objectPath.substr(index_start, index_end - index_start);
+		index_end = object_path.find("/", index_start);
+		if (index_pathfinder_level == index_level)
+			return object_path.substr(index_start, index_end - index_start);
 		index_start = index_end + 1;
-		index_merchantLevel++;
+		index_pathfinder_level++;
 	}
 	return "";
 }
 
-Base_Class* Base_Class::getChild(std::string nameChild) {
+Base_Class* Base_Class::Get_Child(std::string name_child) {
 	for (int i = 0; i < Slave_Vec.size(); i++) {
-		if (Slave_Vec[i]->Get_Object_Name() == nameChild)
+		if (Slave_Vec[i]->Get_Object_Name() == name_child)
 			return Slave_Vec[i];
 	}
 	return nullptr;

@@ -24,11 +24,7 @@ public:
 	Base_Class* Get_Object_By_Path(std::string object_path);
 	Base_Class* Get_Trail(std::string object_trail);
 	Base_Class* Get_Object_Root();
-<<<<<<< HEAD
-	std::string Get_Trail_Item(std::string object_path, int index_level);
-=======
 	std::string Get_Trail_Part(std::string object_path, int index_level);
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 	Base_Class* Get_Child(std::string name_child);
 };
 #endif

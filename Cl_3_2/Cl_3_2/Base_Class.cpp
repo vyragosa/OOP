@@ -86,11 +86,7 @@ int Base_Class::Get_State() {
 
 Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
 	if ((object_path[0] == '/') && (object_path[1] == '/'))
-<<<<<<< HEAD
-		return Find_Object_By_Name(object_path.substr(2, std::string::npos));
-=======
 		return Get_Object_Root()->Find_Object_By_Name(object_path.substr(2, std::string::npos));
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 	if (object_path[0] == '.')
 		return this;
 	if (object_path.size() == 1 && object_path[0] == '/')
@@ -101,33 +97,11 @@ Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
 Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 	bool absolute = true;
 	int index_level = 1;
-<<<<<<< HEAD
-=======
 	std::string trail_part;
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 	if (object_trail[0] != '/') {
 		object_trail = "/" + object_trail;
 		absolute = false;
 	}
-<<<<<<< HEAD
-		
-	std::string trail_item;
-
-	Base_Class* Base_Pathfinder = Get_Object_Root();
-
-	trail_item = Get_Trail_Item(object_trail, index_level);
-	while (!trail_item.empty()) {
-		if (absolute == 1)
-			Base_Pathfinder = Base_Pathfinder->Get_Child(trail_item);
-		else
-			Base_Pathfinder = Base_Pathfinder->Find_Object_By_Name(trail_item);
-		if (!Base_Pathfinder)
-			return nullptr;
-		index_level++;
-		trail_item = Get_Trail_Item(object_trail, index_level);
-	}
-	return Base_Pathfinder;
-=======
 	trail_part = Get_Trail_Part(object_trail, index_level);
 	Base_Class* Obj_Pathfinder = Find_Object_By_Name(trail_part);
 	while (Obj_Pathfinder) {
@@ -141,7 +115,6 @@ Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 			Obj_Pathfinder = Obj_Pathfinder->Find_Object_By_Name(trail_part);
 	}
 	return nullptr;
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 }
 
 Base_Class* Base_Class::Get_Object_Root() {
@@ -152,11 +125,7 @@ Base_Class* Base_Class::Get_Object_Root() {
 	return Base_Pathfinder;
 }
 
-<<<<<<< HEAD
-std::string Base_Class::Get_Trail_Item(std::string object_path, int index_level) {
-=======
 std::string Base_Class::Get_Trail_Part(std::string object_path, int index_level) {
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 	int index_end;
 	int index_start = 1;
 	int index_pathfinder_level = 1;

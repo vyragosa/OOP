@@ -12,11 +12,7 @@ bool Application_Class::Build_Tree() {
 		if (path == "endtree")
 			return true;
 		std::cin >> Temp_Object_Name >> Class_Number;
-<<<<<<< HEAD
-		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(Temp_Parent_Name);
-=======
 		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(path);
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 		if (Temp_Parent_Obj == nullptr) {
 			std::cout << "Object tree";
 			Print_Tree(false);
@@ -58,26 +54,10 @@ void Application_Class::Command_Input() {
 	Base_Class* Current_Obj = this;
 	while (true) {
 
-<<<<<<< HEAD
-	while (true) {
-		std::cout << std::endl;
-=======
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 		std::cin >> command;
 		if (command == "END")
 			return;
 		std::cin >> path;
-<<<<<<< HEAD
-
-		Temp_Obj = Ñurrent_Obj->Get_Object_By_Path(path);
-
-		if (command == "SET") {
-			if (Temp_Obj != nullptr) {
-				Ñurrent_Obj = Temp_Obj;
-				std::cout << "Object is set: " << Ñurrent_Obj->Get_Object_Name();
-			}
-				
-=======
 		std::cout << std::endl;
 		Temp_Obj = Current_Obj->Get_Object_By_Path(path);
 
@@ -87,7 +67,6 @@ void Application_Class::Command_Input() {
 				std::cout << "Object is set: " << Current_Obj->Get_Object_Name();
 			}
 
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 			else
 				std::cout << "Object is not found: " << Temp_Obj->Get_Object_Name() << " " << path;
 		}
@@ -97,11 +76,7 @@ void Application_Class::Command_Input() {
 			else
 				std::cout << path << "     Object is not found";
 		}
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> d519ccc12bfe9514d32ba1233360d2bde3598c12
 	}
 }
 

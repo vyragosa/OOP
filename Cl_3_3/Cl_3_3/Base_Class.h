@@ -14,6 +14,14 @@ typedef void (Base_Class::* TYPE_HANDLER) (std::string);
 
 class Base_Class {
 private:
+	struct o_sh {
+		Base_Class* p_Base;
+		TYPE_SIGNAL p_signal;
+		TYPE_HANDLER p_handler;
+	};
+	std::vector<o_sh*> connects;
+
+
 	std::string Object_Name;
 	Base_Class* Parent_Ptr;
 	std::vector <Base_Class*> Slave_Vec;
@@ -40,6 +48,6 @@ public:
 
 	void setConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_hendler);
 	void deleteConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_hendler);
-	void emitSignal(TYPE_SIGNAL p_signal, Base_Class& command);
+	void emitSignal(TYPE_SIGNAL p_signal, std::string& command);
 };
 #endif

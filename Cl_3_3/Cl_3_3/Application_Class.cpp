@@ -10,7 +10,7 @@ bool Application_Class::Build_Tree() {
 	while (true) {
 		std::cin >> path;
 		if (path == "endtree")
-			return true;
+			break;
 		std::cin >> Temp_Object_Name >> Class_Number;
 		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(path);
 		if (Temp_Parent_Obj == nullptr) {
@@ -39,9 +39,6 @@ bool Application_Class::Build_Tree() {
 			break;
 		}
 	}
-}
-
-void Application_Class::Connections() {
 	std::string first, second;
 	while (true) {
 		std::cin >> first;
@@ -50,6 +47,11 @@ void Application_Class::Connections() {
 		std::cin >> second;
 
 	}
+
+}
+
+void Application_Class::Connections() {
+
 }
 
 void Application_Class::Input_State() {

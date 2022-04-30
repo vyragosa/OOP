@@ -157,3 +157,44 @@ std::string Base_Class::Get_Path() {
 	}
 	return path;
 }
+
+void Base_Class::setConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_handler) {
+	o_sh* value;
+	for (int i = 0; i < connects.size(); i++) {
+		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_ob_hend
+			&& connects[i]->p_handler == p_handler)
+			return;
+	}
+
+	value = new o_sh();
+	value->p_Base = p_ob_hend;
+	value->p_signal = p_signal;
+	value->p_handler = p_handler;
+	connects.push_back(value);
+
+}
+
+void Base_Class::deleteConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_handler) {
+	o_sh* value;
+	for (int i = 0; i < connects.size(); i++) {
+		value = connects[i];
+		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_ob_hend
+			&& connects[i]->p_handler == p_handler) {
+			delete connects[i];
+			connects.erase(connects.begin() + i);
+			return;
+		}
+	}
+}
+
+void Base_Class::emitSignal(TYPE_SIGNAL p_signal, std::string& command) {
+	TYPE_HANDLER hendler;
+	(this->*p_signal)(command);
+
+	for (int i = 0; i < connects.size(); i++) {
+		if (connects[i]->p_signal == p_signal) {
+			hendler = connects[i]->p_handler;
+			(connects[i]->p_Base->*hendler)(command);
+		}
+	}
+}

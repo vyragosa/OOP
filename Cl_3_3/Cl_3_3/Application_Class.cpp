@@ -41,6 +41,17 @@ bool Application_Class::Build_Tree() {
 	}
 }
 
+void Application_Class::Connections() {
+	std::string first, second;
+	while (true) {
+		std::cin >> first;
+		if (first == "end_of_connections")
+			return;
+		std::cin >> second;
+
+	}
+}
+
 void Application_Class::Input_State() {
 	std::string Temp_Object_Name;
 	int State_Value;

@@ -10,18 +10,17 @@ typedef void (Base_Class::* TYPE_SIGNAL) (std::string&);
 typedef void (Base_Class::* TYPE_HANDLER) (std::string);
 
 #define SIGNAL_D(A, signal_f) (TYPE_SIGNAL) (&A::signal_f)
-#define HENDLER_D(B, hendler_f) (TYPE_HANDLER) (&B::hendler_f)
+#define HANDLER_D(B, hendler_f) (TYPE_HANDLER) (&B::hendler_f)
 
 class Base_Class {
 private:
-	struct o_sh {
+	struct options {
 		Base_Class* p_Base;
 		TYPE_SIGNAL p_signal;
 		TYPE_HANDLER p_handler;
 	};
-	std::vector<o_sh*> connects;
-
-
+	std::vector<options*> connects;
+	int Class_num = 1;
 	std::string Object_Name;
 	Base_Class* Parent_Ptr;
 	std::vector <Base_Class*> Slave_Vec;
@@ -32,7 +31,7 @@ public:
 	Base_Class(Base_Class* _Parent_Ptr, std::string _Object_Name = "Root");
 	void Set_Object_Name(std::string _Object_Name);
 	std::string Get_Object_Name();
-	void Print_Tree(bool output_state = false, const int level = 0);
+	void Print_Tree(int state_status = 0, const int level = 0);
 	void Set_Parent_Ptr(Base_Class* _Parent_Ptr);
 	Base_Class* Get_Parent_Ptr();
 	Base_Class* Find_Object_By_Name(std::string _Object_Name);
@@ -44,10 +43,10 @@ public:
 	std::string Get_Trail_Part(std::string object_path, int index_level);
 	Base_Class* Get_Child(std::string name_child);
 	std::string Get_Path();
-
-
-	void setConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_hendler);
-	void deleteConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_hendler);
-	void emitSignal(TYPE_SIGNAL p_signal, std::string& command);
+	void Set_Class_Num(int Class_Num);
+	int Get_Class_Num();
+	void Set_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler, TYPE_HANDLER p_hendler);
+	void Delete_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler, TYPE_HANDLER p_hendler);
+	void Emit_Signal(TYPE_SIGNAL p_signal, std::string& command);
 };
 #endif

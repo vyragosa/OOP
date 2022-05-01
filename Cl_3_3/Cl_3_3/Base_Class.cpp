@@ -14,19 +14,22 @@ std::string Base_Class::Get_Object_Name() {
 	return Object_Name;
 }
 
-void Base_Class::Print_Tree(bool output_state, const int level) {
+void Base_Class::Print_Tree(int state_status, const int level) {
+
 	std::cout << std::endl;
 	for (int i = 0; i < level; i++)
 		std::cout << "    ";
 	std::cout << this->Get_Object_Name();
-	if (output_state == true)
+	if (state_status == 1)
 		if (this->Get_State() != 0)
 			std::cout << " is ready";
 		else
 			std::cout << " is not ready";
+	else if (state_status == 2)
+		this->Set_State(1);
 	if (Slave_Vec.size() > 0)
 		for (int i = 0; i < Slave_Vec.size(); i++)
-			Slave_Vec[i]->Print_Tree(output_state, level + 1);
+			Slave_Vec[i]->Print_Tree(state_status, level + 1);
 }
 
 void Base_Class::Set_Parent_Ptr(Base_Class* _Parent_Ptr) {
@@ -76,8 +79,8 @@ void Base_Class::Set_State(int State_Value) {
 				return;
 			Temp_Parent_Ptr = Temp_Parent_Ptr->Get_Parent_Ptr();
 		}
-		State = State_Value;
 	}
+	State = State_Value;
 }
 
 int Base_Class::Get_State() {
@@ -158,43 +161,52 @@ std::string Base_Class::Get_Path() {
 	return path;
 }
 
-void Base_Class::setConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_handler) {
-	o_sh* value;
+void Base_Class::Set_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler, TYPE_HANDLER p_handler) {
+	options* value;
 	for (int i = 0; i < connects.size(); i++) {
-		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_ob_hend
-			&& connects[i]->p_handler == p_handler)
+		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_obj_handler && connects[i]->p_handler == p_handler)
 			return;
 	}
 
-	value = new o_sh();
-	value->p_Base = p_ob_hend;
+	value = new options();
+	value->p_Base = p_obj_handler;
 	value->p_signal = p_signal;
 	value->p_handler = p_handler;
 	connects.push_back(value);
 
 }
 
-void Base_Class::deleteConnect(TYPE_SIGNAL p_signal, Base_Class* p_ob_hend, TYPE_HANDLER p_handler) {
-	o_sh* value;
+void Base_Class::Delete_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler, TYPE_HANDLER p_handler) {
+	options* value;
 	for (int i = 0; i < connects.size(); i++) {
 		value = connects[i];
-		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_ob_hend
-			&& connects[i]->p_handler == p_handler) {
+		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_obj_handler && connects[i]->p_handler == p_handler) {
 			delete connects[i];
 			connects.erase(connects.begin() + i);
 			return;
 		}
 	}
 }
-
-void Base_Class::emitSignal(TYPE_SIGNAL p_signal, std::string& command) {
-	TYPE_HANDLER hendler;
-	(this->*p_signal)(command);
-
-	for (int i = 0; i < connects.size(); i++) {
-		if (connects[i]->p_signal == p_signal) {
-			hendler = connects[i]->p_handler;
-			(connects[i]->p_Base->*hendler)(command);
+	
+void Base_Class::Emit_Signal(TYPE_SIGNAL p_signal, std::string& command) {
+	TYPE_HANDLER handler;
+	if (this->Get_State() != 0) {
+		(this->*p_signal)(command);
+		for (int i = 0; i < connects.size(); i++) {
+			if (connects[i]->p_signal == p_signal && connects[i]->p_Base->Get_State() != 0) {
+				handler = connects[i]->p_handler;
+				(connects[i]->p_Base->*handler)(command);
+			}
 		}
 	}
+
 }
+
+int Base_Class::Get_Class_Num() {
+	return Class_num;
+}
+
+void Base_Class::Set_Class_Num(int Class_Num) {
+	this->Class_num = Class_Num;
+}
+

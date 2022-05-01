@@ -185,7 +185,7 @@ void Base_Class::Delete_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler,
 		}
 	}
 }
-	
+
 void Base_Class::Emit_Signal(TYPE_SIGNAL p_signal, std::string& command) {
 	TYPE_HANDLER handler;
 	if (this->Get_State() != 0) {

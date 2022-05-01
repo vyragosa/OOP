@@ -165,7 +165,7 @@ TYPE_HANDLER Application_Class::Get_Handler_Class(int class_number) {
 	case 6:
 		return HANDLER_D(Node_Class_6, handler);
 		break;
-	default:	
+	default:
 		break;
 	}
 }

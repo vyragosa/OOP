@@ -19,7 +19,7 @@ void Base_Class::Print_Tree(bool output_state, const int level) {
 	for (int i = 0; i < level; i++)
 		std::cout << "    ";
 	std::cout << this->Get_Object_Name();
-	if (output_state == true)
+	if (output_state != 0)
 		if (this->Get_State() == true)
 			std::cout << " is ready";
 		else
@@ -76,10 +76,10 @@ void Base_Class::Set_State(int State_Value) {
 				return;
 			Temp_Parent_Ptr = Temp_Parent_Ptr->Get_Parent_Ptr();
 		}
-		State = true;
+		State = State_Value;
 	}
 }
 
-bool Base_Class::Get_State() {
+int Base_Class::Get_State() {
 	return State;
 }

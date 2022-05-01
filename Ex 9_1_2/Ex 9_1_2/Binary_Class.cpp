@@ -7,7 +7,7 @@ Binary_Class::Binary_Class(uint8_t value, uint8_t pattern) {
 }
 
 Binary_Class Binary_Class::operator&=(Binary_Class& other) {
-	return Binary_Class(value = value & (other.value & ~(pattern & other.pattern)), pattern);
+	return Binary_Class(value = value & (other.value | ~(pattern & other.pattern)), pattern);
 }
 
 Binary_Class Binary_Class::operator|=(Binary_Class& other) {

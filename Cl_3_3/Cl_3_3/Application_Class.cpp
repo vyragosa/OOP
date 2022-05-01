@@ -76,7 +76,8 @@ bool Application_Class::Build_Tree() {
 
 int Application_Class::Exec_App() {
 	std::cout << "Object tree";
-	Print_Tree(2);
+	Print_Tree(false);
+	Make_All_Ready();
 	std::string command, first, second, message;
 	int condition;
 	while (true) {

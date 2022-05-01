@@ -14,22 +14,20 @@ std::string Base_Class::Get_Object_Name() {
 	return Object_Name;
 }
 
-void Base_Class::Print_Tree(int state_status, const int level) {
+void Base_Class::Print_Tree(bool state_output, const int level) {
 
 	std::cout << std::endl;
 	for (int i = 0; i < level; i++)
 		std::cout << "    ";
 	std::cout << this->Get_Object_Name();
-	if (state_status == 1)
+	if (state_output)
 		if (this->Get_State() != 0)
 			std::cout << " is ready";
 		else
 			std::cout << " is not ready";
-	else if (state_status == 2)
-		this->Set_State(1);
 	if (Slave_Vec.size() > 0)
 		for (int i = 0; i < Slave_Vec.size(); i++)
-			Slave_Vec[i]->Print_Tree(state_status, level + 1);
+			Slave_Vec[i]->Print_Tree(state_output, level + 1);
 }
 
 void Base_Class::Set_Parent_Ptr(Base_Class* _Parent_Ptr) {
@@ -210,3 +208,8 @@ void Base_Class::Set_Class_Num(int Class_Num) {
 	this->Class_num = Class_Num;
 }
 
+void Base_Class::Make_All_Ready() {
+	this->Set_State(1);
+	for (int i = 0; i < Slave_Vec.size(); i++)
+		Slave_Vec[i]->Make_All_Ready();
+}

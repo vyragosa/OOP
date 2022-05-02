@@ -97,7 +97,7 @@ int Application_Class::Exec_App() {
 			continue;
 		}
 		else if (command == "EMIT") {
-			std::cin >> message;
+			std::getline(std::cin, message);
 			from->Emit_Signal(Get_Signal_Class(from->Get_Class_Num()), message);
 			continue;
 		}

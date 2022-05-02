@@ -21,13 +21,13 @@ endtree
 / /object_s2/object_s4
 /object_s2/object_s4 /
 end_of_connections
-EMIT /object_s2/object_s4 Sendmessage1
+EMIT /object_s2/object_s4 Send message 1
 DELETE_CONNECT /object_s2/object_s4 /
-EMIT /object_s2/object_s4 Sendmessage2
+EMIT /object_s2/object_s4 Send message 2
 SET_CONDITION /object_s2/object_s4 0
-EMIT /object_s2/object_s4 Sendmessage3
+EMIT /object_s2/object_s4 Send message 3
 SET_CONNECT /object_s1 /object_s2/object_s6
-EMIT /object_s1 sendmessage4
+EMIT /object_s1 Send message 4
 END
 
 
@@ -40,10 +40,10 @@ appls_root
         object_s6
     object_s13
 Signal from /object_s2/object_s4
-Signal to /object_s2/object_s6 Text: Sendmessage1 (class: 4)
-Signal to  Text: Sendmessage1 (class: 4)
+Signal to /object_s2/object_s6 Text: Send message 1 (class: 4)
+Signal to  Text: Send message 1 (class: 4)
 Signal from /object_s2/object_s4
-Signal to /object_s2/object_s6 Text: Sendmessage2 (class: 4)
+Signal to /object_s2/object_s6 Text: Send message 2 (class: 4)
 Signal from /object_s1
-Signal to /object_s2/object_s6 Text: sendmessage4 (class: 3)
+Signal to /object_s2/object_s6 Text: Send message 4 (class: 3)
 */

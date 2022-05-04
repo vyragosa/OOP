@@ -13,7 +13,6 @@ public:
 	Application_Class(Base_Class* _Parent_Ptr);
 	bool Build_Tree();
 	void Input_State();
-	void Command_Input();
 	int Exec_App();
 };
 #endif

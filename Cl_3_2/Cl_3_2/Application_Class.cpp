@@ -48,14 +48,16 @@ void Application_Class::Input_State() {
 		Find_Object_By_Name(Temp_Object_Name)->Set_State(State_Value);
 }
 
-void Application_Class::Command_Input() {
+int Application_Class::Exec_App() {
+	std::cout << "Object tree";
+	Print_Tree(false);
 	std::string command, path;
 	Base_Class* Temp_Obj;
 	Base_Class* Current_Obj = this;
 	while (true) {
 		std::cin >> command;
 		if (command == "END")
-			return;
+			break;
 		std::cin >> path;
 		std::cout << std::endl;
 		Temp_Obj = Current_Obj->Get_Object_By_Path(path);
@@ -77,12 +79,6 @@ void Application_Class::Command_Input() {
 		}
 
 	}
-}
-
-int Application_Class::Exec_App() {
-	std::cout << "Object tree";
-	Print_Tree(false);
-	Command_Input();
 	return 1;
 
 }

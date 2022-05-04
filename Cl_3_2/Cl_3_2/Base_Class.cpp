@@ -78,6 +78,11 @@ void Base_Class::Set_State(int State_Value) {
 		}
 		State = State_Value;
 	}
+	else {
+		State = State_Value;
+		for (int i = 0; i < Slave_Vec.size(); i++)
+			Slave_Vec[i]->Set_State(0);
+	}
 }
 
 int Base_Class::Get_State() {

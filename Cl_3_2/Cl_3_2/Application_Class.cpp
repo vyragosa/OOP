@@ -53,7 +53,6 @@ void Application_Class::Command_Input() {
 	Base_Class* Temp_Obj;
 	Base_Class* Current_Obj = this;
 	while (true) {
-
 		std::cin >> command;
 		if (command == "END")
 			return;

@@ -77,8 +77,13 @@ void Base_Class::Set_State(int State_Value) {
 				return;
 			Temp_Parent_Ptr = Temp_Parent_Ptr->Get_Parent_Ptr();
 		}
+		State = State_Value;
 	}
-	State = State_Value;
+	else {
+		State = State_Value;
+		for (int i = 0; i < Slave_Vec.size(); i++)
+			Slave_Vec[i]->Set_State(0);
+	}
 }
 
 int Base_Class::Get_State() {
@@ -98,19 +103,24 @@ Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
 Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 	bool absolute = true;
 	int index_level = 1;
+	Base_Class* Obj_Pathfinder = this;
 	std::string trail_part;
 	if (object_trail[0] != '/') {
 		object_trail = "/" + object_trail;
 		absolute = false;
 	}
 	trail_part = Get_Trail_Part(object_trail, index_level);
-	Base_Class* Obj_Pathfinder = Find_Object_By_Name(trail_part);
+	if (absolute == true)
+		Obj_Pathfinder = Get_Child(trail_part);
+	else
+		Obj_Pathfinder = Find_Object_By_Name(trail_part);
+
 	while (Obj_Pathfinder) {
 		index_level++;
 		trail_part = Get_Trail_Part(object_trail, index_level);
 		if (trail_part.empty())
 			return Obj_Pathfinder;
-		if (absolute == 1)
+		if (absolute == true)
 			Obj_Pathfinder = Obj_Pathfinder->Get_Child(trail_part);
 		else
 			Obj_Pathfinder = Obj_Pathfinder->Find_Object_By_Name(trail_part);

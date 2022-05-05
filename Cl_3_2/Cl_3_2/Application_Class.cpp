@@ -2,7 +2,7 @@
 Application_Class::Application_Class(Base_Class* _Parent_Ptr) :Base_Class(_Parent_Ptr) {
 }
 
-bool Application_Class::Build_Tree() {
+void Application_Class::Build_Tree() {
 	std::string Temp_Object_Name, path;
 	int Class_Number;
 	std::cin >> Temp_Object_Name;
@@ -10,14 +10,14 @@ bool Application_Class::Build_Tree() {
 	while (true) {
 		std::cin >> path;
 		if (path == "endtree")
-			return true;
+			return;
 		std::cin >> Temp_Object_Name >> Class_Number;
 		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(path);
 		if (Temp_Parent_Obj == nullptr) {
 			std::cout << "Object tree";
 			Print_Tree(false);
 			std::cout << std::endl << "The head object " << path << " is not found";
-			return false;
+			exit(0);
 		}
 		switch (Class_Number) {
 		case 2:
@@ -39,13 +39,6 @@ bool Application_Class::Build_Tree() {
 			break;
 		}
 	}
-}
-
-void Application_Class::Input_State() {
-	std::string Temp_Object_Name;
-	int State_Value;
-	while (std::cin >> Temp_Object_Name >> State_Value)
-		Find_Object_By_Name(Temp_Object_Name)->Set_State(State_Value);
 }
 
 int Application_Class::Exec_App() {

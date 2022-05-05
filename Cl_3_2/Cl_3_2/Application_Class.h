@@ -11,7 +11,7 @@
 class Application_Class : public Base_Class {
 public:
 	Application_Class(Base_Class* _Parent_Ptr);
-	bool Build_Tree();
+	void Build_Tree();
 	void Input_State();
 	int Exec_App();
 };

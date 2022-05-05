@@ -118,7 +118,7 @@ Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 		trail_part = Get_Trail_Part(object_trail, index_level);
 		if (trail_part.empty())
 			return Obj_Pathfinder;
-		if (absolute == 1)
+		if (absolute == true)
 			Obj_Pathfinder = Obj_Pathfinder->Get_Child(trail_part);
 		else
 			Obj_Pathfinder = Obj_Pathfinder->Find_Object_By_Name(trail_part);

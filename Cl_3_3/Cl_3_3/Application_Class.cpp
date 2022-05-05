@@ -11,7 +11,7 @@ void Application_Class::handler(std::string message) {
 	std::cout << "\nSignal to " << this->Get_Path() << " Text: " << message;
 }
 
-bool Application_Class::Build_Tree() {
+void Application_Class::Build_Tree() {
 	std::string Temp_Object_Name, path;
 	int Class_Number;
 	std::cin >> Temp_Object_Name;
@@ -21,12 +21,12 @@ bool Application_Class::Build_Tree() {
 		if (path == "endtree")
 			break;
 		std::cin >> Temp_Object_Name >> Class_Number;
-		Base_Class* Temp_Parent_Obj = Get_Object_By_Path(path);
+		Base_Class* Temp_Parent_Obj = this->Get_Object_By_Path(path);
 		if (Temp_Parent_Obj == nullptr) {
 			std::cout << "Object tree";
 			Print_Tree(false);
 			std::cout << "\nThe head object " << path << " is not found";
-			return false;
+			exit(0);
 		}
 		Base_Class* child = nullptr;
 		if (Class_Number == 2)
@@ -39,23 +39,22 @@ bool Application_Class::Build_Tree() {
 			child = new Node_Class_5(Temp_Parent_Obj, Temp_Object_Name);
 		else if (Class_Number == 6)
 			child = new Node_Class_6(Temp_Parent_Obj, Temp_Object_Name);
-		
 		child->Set_Class_Num(Class_Number);
 	}
 	std::string first, second;
 	while (true) {
 		std::cin >> first;
 		if (first == "end_of_connections")
-			return true;
+			return;
 		Base_Class* from = Get_Object_By_Path(first);
 		if (from == nullptr) {
-			std::cout << "\nObject " << first << " is not found";
+			std::cout << "\nObject " << first << " not found";
 		}
 		else {
 			std::cin >> second;
 			Base_Class* to = Get_Object_By_Path(second);
 			if (to == nullptr) {
-				std::cout << "\nHandler object " << first << " is not found";
+				std::cout << "\nHandler object " << second << " not found";
 			}
 			else {
 				from->Set_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
@@ -108,6 +107,7 @@ int Application_Class::Exec_App() {
 }
 
 TYPE_SIGNAL Application_Class::Get_Signal_Class(int class_number) {
+
 	if (class_number == 1)
 		return SIGNAL_D(Application_Class, signal);
 	if (class_number == 2)
@@ -121,9 +121,11 @@ TYPE_SIGNAL Application_Class::Get_Signal_Class(int class_number) {
 	if (class_number == 6)
 		return SIGNAL_D(Node_Class_6, signal);
 	return TYPE_SIGNAL();
+
 }
 
 TYPE_HANDLER Application_Class::Get_Handler_Class(int class_number) {
+
 	if (class_number == 1)
 		return HANDLER_D(Application_Class, handler);
 	if (class_number == 2)
@@ -138,79 +140,3 @@ TYPE_HANDLER Application_Class::Get_Handler_Class(int class_number) {
 		return HANDLER_D(Node_Class_6, handler);
 	return TYPE_HANDLER();
 }
-
-
-
-/*
-int Application_Class::Exec_App() {
-	std::cout << "Object tree";
-	Print_Tree(false);
-	Make_All_Ready();
-	std::string command, first, second, message;
-	int condition;
-	while (true) {
-		std::cin >> command;
-		if (command == "END") {
-			break;
-		}
-		else if (command == "SET_CONDITION") {
-			std::cin >> first;
-			Base_Class* from = Get_Object_By_Path(first);
-			if (from == nullptr) {
-				std::cout << "\nObject " << first << " is not found";
-			}
-			else {
-				std::cin >> condition;
-				from->Set_State(condition);
-			}
-		}
-		else if (command == "EMIT") {
-			std::cin >> first;
-			Base_Class* from = Get_Object_By_Path(first);
-			if (from == nullptr) {
-				std::cout << "\nObject " << first << " is not found";
-			}
-			else {
-				std::getline(std::cin, message);
-				from->Emit_Signal(Get_Signal_Class(from->Get_Class_Num()), message);
-			}
-		}
-		else if (command == "SET_CONNECT") {
-			std::cin >> first;
-			Base_Class* from = Get_Object_By_Path(first);
-			if (from == nullptr) {
-				std::cout << "\nObject " << first << " is not found";
-			}
-			else {
-				std::cin >> second;
-				Base_Class* to = Get_Object_By_Path(second);
-				if (to == nullptr) {
-					std::cout << "\nHandler object " << first << " is not found";
-				}
-				else {
-					from->Set_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
-				}
-			}
-		}
-		else if (command == "DELETE_CONNECT") {
-			std::cin >> first;
-			Base_Class* from = Get_Object_By_Path(first);
-			if (from == nullptr) {
-				std::cout << "\nObject " << first << " is not found";
-			}
-			else {
-				std::cin >> second;
-				Base_Class* to = Get_Object_By_Path(second);
-				if (to == nullptr) {
-					std::cout << "\nHandler object " << first << " is not found";
-				}
-				else {
-					from->Delete_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
-				}
-			}
-		}
-
-	}
-	return 1;
-}
-*/

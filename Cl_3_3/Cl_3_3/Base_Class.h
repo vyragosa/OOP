@@ -31,7 +31,7 @@ public:
 	Base_Class(Base_Class* _Parent_Ptr, std::string _Object_Name = "Root");
 	void Set_Object_Name(std::string _Object_Name);
 	std::string Get_Object_Name();
-	void Print_Tree(bool state_output = false, const int level = 0);
+	void Print_Tree(bool output_state = false, const int level = 0);
 	void Set_Parent_Ptr(Base_Class* _Parent_Ptr);
 	Base_Class* Get_Parent_Ptr();
 	Base_Class* Find_Object_By_Name(std::string _Object_Name);
@@ -42,6 +42,7 @@ public:
 	Base_Class* Get_Object_Root();
 	std::string Get_Trail_Part(std::string object_path, int index_level);
 	Base_Class* Get_Child(std::string name_child);
+
 	std::string Get_Path();
 	void Set_Class_Num(int Class_Num);
 	int Get_Class_Num();
@@ -49,5 +50,6 @@ public:
 	void Delete_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler, TYPE_HANDLER p_hendler);
 	void Emit_Signal(TYPE_SIGNAL p_signal, std::string& command);
 	void Make_All_Ready();
+
 };
 #endif

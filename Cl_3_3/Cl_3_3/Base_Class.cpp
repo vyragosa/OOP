@@ -14,20 +14,19 @@ std::string Base_Class::Get_Object_Name() {
 	return Object_Name;
 }
 
-void Base_Class::Print_Tree(bool state_output, const int level) {
-
+void Base_Class::Print_Tree(bool output_state, const int level) {
 	std::cout << std::endl;
 	for (int i = 0; i < level; i++)
 		std::cout << "    ";
 	std::cout << this->Get_Object_Name();
-	if (state_output)
+	if (output_state == true)
 		if (this->Get_State() != 0)
 			std::cout << " is ready";
 		else
 			std::cout << " is not ready";
 	if (Slave_Vec.size() > 0)
 		for (int i = 0; i < Slave_Vec.size(); i++)
-			Slave_Vec[i]->Print_Tree(state_output, level + 1);
+			Slave_Vec[i]->Print_Tree(output_state, level + 1);
 }
 
 void Base_Class::Set_Parent_Ptr(Base_Class* _Parent_Ptr) {
@@ -102,8 +101,8 @@ Base_Class* Base_Class::Get_Object_By_Path(std::string object_path) {
 
 Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 	bool absolute = true;
-	int index_level = 1;
 	Base_Class* Obj_Pathfinder = this;
+	int index_level = 1;
 	std::string trail_part;
 	if (object_trail[0] != '/') {
 		object_trail = "/" + object_trail;
@@ -114,7 +113,6 @@ Base_Class* Base_Class::Get_Trail(std::string object_trail) {
 		Obj_Pathfinder = Get_Child(trail_part);
 	else
 		Obj_Pathfinder = Find_Object_By_Name(trail_part);
-
 	while (Obj_Pathfinder) {
 		index_level++;
 		trail_part = Get_Trail_Part(object_trail, index_level);
@@ -166,6 +164,8 @@ std::string Base_Class::Get_Path() {
 		path = "/" + Base_Pathfinder->Get_Object_Name() + path;
 		Base_Pathfinder = Base_Pathfinder->Parent_Ptr;
 	}
+	if (path.empty())
+		return "/";
 	return path;
 }
 

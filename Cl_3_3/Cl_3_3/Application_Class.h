@@ -10,13 +10,14 @@
 
 class Application_Class : public Base_Class {
 public:
+	Application_Class(Base_Class* _Parent_Ptr);
 	void signal(std::string& message);
 	void handler(std::string message);
-	Application_Class(Base_Class* _Parent_Ptr);
-	bool Build_Tree();
+	void Build_Tree();
 	int Exec_App();
 
 	TYPE_SIGNAL Get_Signal_Class(int class_number);
 	TYPE_HANDLER Get_Handler_Class(int class_number);
+
 };
 #endif

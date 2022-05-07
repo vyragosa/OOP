@@ -223,3 +223,12 @@ void Base_Class::Make_All_Ready() {
 	for (int i = 0; i < Slave_Vec.size(); i++)
 		Slave_Vec[i]->Make_All_Ready();
 }
+
+Base_Class::~Base_Class() {
+	for (int i = 0; i < Slave_Vec.size(); i++) {
+		delete Slave_Vec[i];
+	}
+	for (int i = 0; i < connects.size(); i++) {
+		delete connects[i];
+	}
+}

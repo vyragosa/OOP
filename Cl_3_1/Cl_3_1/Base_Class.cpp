@@ -88,3 +88,9 @@ void Base_Class::Set_State(int State_Value) {
 int Base_Class::Get_State() {
 	return State;
 }
+
+Base_Class::~Base_Class() {
+	for (int i = 0; i < Slave_Vec.size(); i++) {
+		delete Slave_Vec[i];
+	}
+}

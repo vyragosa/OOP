@@ -156,3 +156,9 @@ Base_Class* Base_Class::Get_Child(std::string name_child) {
 	}
 	return nullptr;
 }
+
+Base_Class::~Base_Class() {
+	for (int i = 0; i < Slave_Vec.size(); i++) {
+		delete Slave_Vec[i];
+	}
+}

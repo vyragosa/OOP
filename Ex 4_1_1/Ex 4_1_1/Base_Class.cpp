@@ -69,3 +69,9 @@ Base_Class* Base_Class::Find_Object_By_Name(std::string _Object_Name) {
 	}
 	return nullptr;
 }
+
+Base_Class::~Base_Class() {
+	for (int i = 0; i < Slave_Vec.size(); i++) {
+		delete Slave_Vec[i];
+	}
+}

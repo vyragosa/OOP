@@ -50,6 +50,6 @@ public:
 	void Delete_Connect(TYPE_SIGNAL p_signal, Base_Class* p_obj_handler, TYPE_HANDLER p_hendler);
 	void Emit_Signal(TYPE_SIGNAL p_signal, std::string& command);
 	void Make_All_Ready();
-
+	~Base_Class();
 };
 #endif

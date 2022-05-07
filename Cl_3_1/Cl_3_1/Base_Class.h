@@ -21,5 +21,6 @@ public:
 	Base_Class* Find_Object_By_Name(std::string _Object_Name);
 	void Set_State(int State_Value);
 	int Get_State();
+	~Base_Class();
 };
 #endif

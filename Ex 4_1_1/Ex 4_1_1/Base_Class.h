@@ -18,5 +18,6 @@ public:
 	void Set_Root_Ptr(Base_Class* _Root_Ptr);
 	Base_Class* Get_Root_Ptr();
 	Base_Class* Find_Object_By_Name(std::string _Object_Name);
+	~Base_Class();
 };
 #endif

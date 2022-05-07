@@ -42,7 +42,6 @@ public:
 	Base_Class* Get_Object_Root();
 	std::string Get_Trail_Part(std::string object_path, int index_level);
 	Base_Class* Get_Child(std::string name_child);
-
 	std::string Get_Path();
 	void Set_Class_Num(int Class_Num);
 	int Get_Class_Num();

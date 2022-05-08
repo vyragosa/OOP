@@ -93,7 +93,7 @@ int Application_Class::Exec_App() {
 			std::cin >> second;
 			Base_Class* to = Get_Object_By_Path(second);
 			if (to == nullptr) {
-				std::cout << "\nHandler object " << first << " is not found";
+				std::cout << "\nHandler object " << second << " is not found";
 			}
 			else if (command == "SET_CONNECT") {
 				from->Set_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));

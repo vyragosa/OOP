@@ -76,34 +76,60 @@ int Application_Class::Exec_App() {
 		if (command == "END") {
 			break;
 		}
-		else if(command == "SET_CONDITION" 
-			|| command == "EMIT" 
-			|| command == "SET_CONNECT" 
-			|| command == "DELETE_CONNECT")
-		std::cin >> first;
-		Base_Class* from = Get_Object_By_Path(first);
-		if (from == nullptr) {
-			std::cout << "\nObject " << first << " not found";
-		}
 		else if (command == "SET_CONDITION") {
-			std::cin >> condition;
-			from->Set_State(condition);
+			std::cin >> first;
+			Base_Class* from = Get_Object_By_Path(first);
+			if (from == nullptr) {
+				std::cout << "\nObject " << first << " is not found";
+			}
+			else {
+				std::cin >> condition;
+				from->Set_State(condition);
+			}
 		}
 		else if (command == "EMIT") {
-			std::getline(std::cin, message);
-			from->Emit_Signal(Get_Signal_Class(from->Get_Class_Num()), message);
+			std::cin >> first;
+			Base_Class* from = Get_Object_By_Path(first);
+			if (from == nullptr) {
+				std::cout << "\nObject " << first << " is not found";
+			}
+			else {
+				std::getline(std::cin, message);
+				from->Emit_Signal(Get_Signal_Class(from->Get_Class_Num()), message);
+			}
 		}
-		else {
-			std::cin >> second;
-			Base_Class* to = Get_Object_By_Path(second);
-			if (to == nullptr) {
-				std::cout << "\nHandler object " << second << "	 not found";
+		else if (command == "SET_CONNECT") {
+			std::cin >> first;
+			Base_Class* from = Get_Object_By_Path(first);
+			if (from == nullptr) {
+				std::cout << "\nObject " << first << " is not found";
 			}
-			else if (command == "SET_CONNECT") {
-				from->Set_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
+			else {
+				std::cin >> second;
+				Base_Class* to = Get_Object_By_Path(second);
+				if (to == nullptr) {
+					std::cout << "\nHandler object " << first << " is not found";
+				}
+				else {
+					from->Set_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
+				}
 			}
-			else if (command == "DELETE_CONNECT") {
-				from->Delete_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
+		}
+		else if (command == "DELETE_CONNECT") {
+			std::cin >> first;
+			Base_Class* from = Get_Object_By_Path(first);
+			if (from == nullptr) {
+				std::cout << "\nObject " << first << " is not found";
+			}
+			else {
+				std::cin >> second;
+				Base_Class* to = Get_Object_By_Path(second);
+				if (to == nullptr) {
+					std::cout << "\nHandler object " << first << " is not found";
+				}
+				else {
+					from->Delete_Connect(Get_Signal_Class(from->Get_Class_Num()), to, Get_Handler_Class(to->Get_Class_Num()));
+				}
 			}
 		}
 	}

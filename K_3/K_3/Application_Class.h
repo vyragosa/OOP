@@ -2,11 +2,11 @@
 #define _APPLICATION_CLASS_H_
 
 #include "Base_Class.h"
-#include "Node_Class_2.h"
-#include "Node_Class_3.h"
-#include "Node_Class_4.h"
-#include "Node_Class_5.h"
-#include "Node_Class_6.h"
+#include "Input.h"
+#include "Output.h"
+#include "Compute.h"
+#include "Bit_Shift.h"
+#include "Complete.h"
 
 class Application_Class : public Base_Class {
 public:

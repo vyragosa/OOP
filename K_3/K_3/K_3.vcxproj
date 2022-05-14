@@ -139,7 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application_Class.cpp" />
+    <ClCompile Include="Base_Class.cpp" />
+    <ClCompile Include="Bit_Shift.cpp" />
+    <ClCompile Include="Complete.cpp" />
+    <ClCompile Include="Compute.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="K_3.cpp" />
+    <ClCompile Include="Output.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application_Class.h" />
+    <ClInclude Include="Base_Class.h" />
+    <ClInclude Include="Bit_Shift.h" />
+    <ClInclude Include="Complete.h" />
+    <ClInclude Include="Compute.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Output.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

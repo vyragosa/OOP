@@ -219,10 +219,8 @@ void Base_Class::Set_Connect(TYPE_SIGNAL p_signal, Base_Class *p_obj_handler, TY
 
 void Base_Class::Delete_Connect(TYPE_SIGNAL p_signal, Base_Class *p_obj_handler, TYPE_HANDLER p_handler)
 {
-	options *value;
 	for (int i = 0; i < connects.size(); i++)
 	{
-		value = connects[i];
 		if (connects[i]->p_signal == p_signal && connects[i]->p_Base == p_obj_handler && connects[i]->p_handler == p_handler)
 		{
 			delete connects[i];

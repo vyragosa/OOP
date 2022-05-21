@@ -6,9 +6,10 @@
 #include "Output.h"
 #include "Compute.h"
 #include "Bit_Shift.h"
-#include "Complete.h"
+#include "Reset.h"
 
 class Application_Class : public Base_Class {
+	std::string task;
 public:
 	Application_Class(Base_Class* _Parent_Ptr);
 	void signal(std::string& message);

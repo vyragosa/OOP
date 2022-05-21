@@ -36,7 +36,7 @@
     <ClCompile Include="Output.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Complete.cpp">
+    <ClCompile Include="Reset.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClInclude Include="Output.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Complete.h">
+    <ClInclude Include="Reset.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

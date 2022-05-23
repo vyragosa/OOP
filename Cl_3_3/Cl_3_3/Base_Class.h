@@ -10,7 +10,7 @@ typedef void (Base_Class::*TYPE_SIGNAL)(std::string &);
 typedef void (Base_Class::*TYPE_HANDLER)(std::string);
 
 #define SIGNAL_D(A, signal_f) (TYPE_SIGNAL)(&A::signal_f)
-#define HANDLER_D(B, hendler_f) (TYPE_HANDLER)(&B::hendler_f)
+#define HANDLER_D(B, handler_f) (TYPE_HANDLER)(&B::handler_f)
 
 class Base_Class {
 private:

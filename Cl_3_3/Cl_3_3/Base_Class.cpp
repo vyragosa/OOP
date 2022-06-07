@@ -93,7 +93,7 @@ int Base_Class::Get_State() {
 Base_Class *Base_Class::Get_Object_By_Path(std::string object_path) {
 	if ((object_path[0] == '/') && (object_path[1] == '/'))
 		return Get_Object_Root()->Find_Object_By_Name(object_path.substr(2, std::string::npos));
-	if (object_path[0] == '.')
+	if ((object_path[0] == '.') && object_path.size() == 1)
 		return this;
 	if (object_path.size() == 1 && object_path[0] == '/')
 		return Get_Object_Root();

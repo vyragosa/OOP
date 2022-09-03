@@ -24,7 +24,6 @@ void Base_Class::Print_Tree(bool output_state, const int level) {
 			std::cout << " is ready";
 		else
 			std::cout << " is not ready";
-	if (Slave_Vec.size() > 0)
 		for (int i = 0; i < Slave_Vec.size(); i++)
 			Slave_Vec[i]->Print_Tree(output_state, level + 1);
 }

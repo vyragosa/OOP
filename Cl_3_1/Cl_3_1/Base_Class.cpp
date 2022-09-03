@@ -20,7 +20,7 @@ void Base_Class::Print_Tree(bool output_state, const int level) {
 		std::cout << "    ";
 	std::cout << this->Get_Object_Name();
 	if (output_state != 0)
-		if (this->Get_State() == true)
+		if (this->Get_State() != 0)
 			std::cout << " is ready";
 		else
 			std::cout << " is not ready";
